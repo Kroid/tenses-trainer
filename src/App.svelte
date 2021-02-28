@@ -146,19 +146,20 @@
 	<!-- Buttons -->
 	<div class="row row-cols-3">
 		{#each tenses as tense, i (tense.id)}
-			<div class="col">
-				<div class="form-group">
-					<button
-						class="btn btn-sm btn-block {tenses[i].failed
-							? 'btn-danger'
-							: 'btn-outline-primary'}"
-						disabled={!tense.enabled}
-						on:click={() => onSelectTense(tense)}
-					>
-						{tense.title}
-					</button>
+			{#if tense.enabled}
+				<div class="col">
+					<div class="form-group">
+						<button
+							class="btn btn-sm btn-block {tenses[i].failed
+								? 'btn-danger'
+								: 'btn-outline-primary'}"
+							on:click={() => onSelectTense(tense)}
+						>
+							{tense.title}
+						</button>
+					</div>
 				</div>
-			</div>
+			{/if}
 		{/each}
 	</div>
 	<hr />
