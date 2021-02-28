@@ -246,4 +246,13 @@
 </div>
 
 <style>
+	button {
+		min-height: 80px;
+	}
+
+	.btn-outline-primary:hover {
+		background-color: #fff;
+		border-color: #007bff;
+		color: #007bff;
+	}
 </style>
