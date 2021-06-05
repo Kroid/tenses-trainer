@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      HTML_BASE_HREF: '/tenses-trainer'
 
     steps:
     - uses: actions/checkout@v2
