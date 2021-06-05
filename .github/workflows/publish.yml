@@ -28,6 +28,9 @@ jobs:
     - name: Generate HTML
       run: yarn build
 
+    - name: Add .nojekyll file
+      run: touch build/.nojekyll
+
     - name: Publish
       uses: s0/git-publish-subdir-action@develop
       env:
