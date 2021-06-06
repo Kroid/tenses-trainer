@@ -8,5 +8,11 @@
 	}
 </script>
 
-<a rel="external" href="{prefix}/tenses">Tenses</a>
-<a rel="external" href="{prefix}/sentences">Sentences</a>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<a class="btn btn-outline-primary" rel="external" href="{prefix}/tenses">Tenses</a>
+			<a class="btn btn-outline-primary" rel="external" href="{prefix}/sentences">Sentences</a>
+		</div>
+	</div>
+</div>

@@ -24,7 +24,8 @@
 
 	const settings = {
 		// {"Present Simple": true, ...}
-		tenses: Object.assign(...tenses.map((k) => ({ [k]: true })))
+		tenses: Object.assign(...tenses.map((k) => ({ [k]: true }))),
+		reverse: false
 	};
 
 	function enabledTenses() {
@@ -51,19 +52,17 @@
 <div class="container">
 	<div class="row" style="margin-top: 30px;">
 		<div class="col-1-auto">
-			<div class="text-center">
-				<p>
-					<strong>
-						{currentTense}
-					</strong>
-				</p>
+			{#if (!settings.reverse && !showAnswer) || showAnswer}
+				<div class="text-center">
+					<p>
+						<strong>
+							{currentTense}
+						</strong>
+					</p>
+				</div>
+			{/if}
 
-				{#if !showAnswer}
-					<button class="btn btn-outline-primary" on:click={() => (showAnswer = true)}>show</button>
-				{/if}
-			</div>
-
-			{#if showAnswer}
+			{#if settings.reverse || (showAnswer && !settings.reverse)}
 				<table class="table text-center">
 					<tbody>
 						<tr>
@@ -76,10 +75,16 @@
 						</tr>
 					</tbody>
 				</table>
+			{/if}
 
+			{#if showAnswer}
 				<div class="text-center">
 					<button class="btn btn-outline-primary" on:click={() => updateCurrentTense()}>next</button
 					>
+				</div>
+			{:else}
+				<div class="text-center">
+					<button class="btn btn-outline-primary" on:click={() => (showAnswer = true)}>show</button>
 				</div>
 			{/if}
 		</div>
@@ -112,6 +117,22 @@
 					</label>
 				</div>
 			{/each}
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 10px;">
+		<div class="col">
+			<h6>Other:</h6>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					bind:checked={settings.reverse}
+					on:click={() => updateCurrentTense()}
+					id="reverse"
+				/>
+				<label class="form-check-label" for="reverse"> Reverse </label>
+			</div>
 		</div>
 	</div>
 </div>
