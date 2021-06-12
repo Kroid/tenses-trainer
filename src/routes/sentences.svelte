@@ -62,8 +62,18 @@
 			failedTenses[tense] = false;
 		});
 
-		currentTense = randomTense();
-		currentSentence = randomSentence(currentTense, randomSentenceType());
+		if (enabledTenses.length == 0) {
+			currentTense = null;
+			currentSentence = null;
+		} else if (enabledTenses.length == 1) {
+			currentSentence = randomSentence(currentTense, randomSentenceType());
+		} else {
+			let prevTense = currentTense;
+			while (currentTense == prevTense) {
+				currentTense = randomTense();
+			}
+			currentSentence = randomSentence(currentTense, randomSentenceType());
+		}
 	}
 
 	function onSelectTense(tense) {

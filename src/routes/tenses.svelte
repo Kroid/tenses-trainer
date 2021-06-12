@@ -41,7 +41,16 @@
 	}
 
 	function updateCurrentTense() {
-		currentTense = randomTense();
+		if (enabledTenses.length == 0) {
+			currentTense = null;
+		} else if (enabledTenses.length == 1) {
+			// pass
+		} else {
+			let prevTense = currentTense;
+			while (currentTense == prevTense) {
+				currentTense = randomTense();
+			}
+		}
 		showAnswer = false;
 	}
 
