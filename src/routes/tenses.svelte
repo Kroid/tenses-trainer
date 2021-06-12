@@ -41,9 +41,9 @@
 	}
 
 	function updateCurrentTense() {
-		if (enabledTenses.length == 0) {
+		if (enabledTenses().length == 0) {
 			currentTense = null;
-		} else if (enabledTenses.length == 1) {
+		} else if (enabledTenses().length == 1) {
 			// pass
 		} else {
 			let prevTense = currentTense;

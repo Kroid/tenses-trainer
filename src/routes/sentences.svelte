@@ -62,10 +62,10 @@
 			failedTenses[tense] = false;
 		});
 
-		if (enabledTenses.length == 0) {
+		if (enabledTenses().length == 0) {
 			currentTense = null;
 			currentSentence = null;
-		} else if (enabledTenses.length == 1) {
+		} else if (enabledTenses().length == 1) {
 			currentSentence = randomSentence(currentTense, randomSentenceType());
 		} else {
 			let prevTense = currentTense;
